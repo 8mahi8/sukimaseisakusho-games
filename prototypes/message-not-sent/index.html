@@ -117,12 +117,12 @@ const makeMessages=()=>({
  mina:[
   message("21:05","アオ：俺、まだ旧館にいる。地下の資料を見つけたい。",true),
   ...(state.mina?[message("21:06","アオ：来なくていい。もう帰った。",true,true),message("21:14","ミナ：帰ったならよかった。明日話そう。",false,true),message("23:11","ミナ：今夜はずっと家にいるよ。",false,true)]:[message("21:13","ミナ：迎えに行く。そこにいて。"),message("23:11","ミナ：正面入口についたよ。"),message("23:16","ミナ：地下の扉、開けていい？")]),
-  message("23:20",state.mina?"ミナ：…ねえ、もう帰ったんだよね？":"ミナ：アオ、どこ？",false,state.mina)
+  message("23:20",state.kei?(state.mina?"ミナ：ケイから連絡が来た。録画には誰も映ってないって。帰ったんだよね？":"ミナ：ケイから連絡が来た。地下に誰も映ってないって…アオ、どこ？"):(state.mina?"ミナ：…ねえ、もう帰ったんだよね？":"ミナ：アオ、どこ？"),false,state.mina||state.kei)
  ],
  kei:[
   message("21:08","ケイ：23時以降の映像は通常どおり上書きされます。"),
   ...(state.kei?[message("21:09","アオ：今夜23時台の映像を保存して。",true,true),message("21:19","ケイ：了解。別媒体へ保存します。",false,true),message("23:18","ケイ：23:17、地下扉の前に人影は記録されていません。",false,true)]:[message("21:19","ケイ：保存依頼はないので、通常運用で終了します。"),message("23:18","ケイ：23:17の映像は上書き済みです。")]),
-  message("23:21","ケイ：地下扉は外側から施錠されています。")
+  message("23:21",state.mina?"ケイ：ミナさんの来館記録はありません。地下扉は外側から施錠されています。":"ケイ：ミナさんから入口の照会がありました。地下扉は外側から施錠されています。",false,state.mina)
  ],
  system:[
   message("20:58","SYSTEM：端末内のタイマー登録が更新されました。"),
@@ -157,7 +157,7 @@ function drawTabs(){for(const id of ["mina","kei","system"]){const tab=$("tab-"+
 function updateCompare(){
  const root=$("compare-results"),key=branchKey();root.replaceChildren();$("compare-progress").textContent=`${Math.min(2,state.compared.size)} / 2`;
  if(state.compared.size===0){const e=document.createElement("span");e.className="placeholder";e.textContent="まだ比較していません。下書きを送った状態で『原本と比較する』を押そう。";root.append(e);return;}
- const title=document.createElement("div");title.className="compare-note";const h=document.createElement("strong");h.textContent=`最新の比較：${key=== "00"?"原本":`再構成 ${key}`}`;const p=document.createElement("p");p.textContent=key==="00"?"原本では改変差分はありません。":state.mina&&state.kei?"ミナの行動もケイの保存記録も変わった。":state.mina?"ミナは旧館に来なくなった。":"ケイは監視映像を保存した。";title.append(h,p);root.append(title);
+ const title=document.createElement("div");title.className="compare-note";const h=document.createElement("strong");h.textContent=`最新の比較：${key=== "00"?"原本":`再構成 ${key}`}`;const p=document.createElement("p");p.textContent=key==="00"?"原本では改変差分はありません。":state.mina&&state.kei?"ミナの行動もケイの保存記録も変わり、双方のチャットに波及した。":state.mina?"ミナは旧館に来なくなり、ケイの会話にも影響した。":"ケイは監視映像を保存し、ミナの会話にも影響した。";title.append(h,p);root.append(title);
  const constant=document.createElement("div");constant.className="compare-constant";constant.textContent="↳ 変化なし：23:17『扉を開けるな』";root.append(constant);
  if(state.compared.size>=2){const note=document.createElement("div");note.className="compare-note";const tx=document.createElement("p");tx.textContent="異なる改変を比較できた。通知の発信元を調べよう。";note.append(tx);root.append(note);}
 }
