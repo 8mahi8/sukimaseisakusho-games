@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b101b">
+  <title>このメッセージは送信されていません｜試作 0.1</title>
+  <meta name="description" content="未送信の一通を送ると、未来のチャット履歴が変わる。すきま製作所の短編インタラクティブミステリー試作。">
+  <style>
+:root{color-scheme:dark;--bg:#0b101b;--paper:#101827;--panel:#141e2e;--panel-2:#1b2738;--line:#2a384a;--text:#ebf0f6;--muted:#95a2b4;--weak:#6b7b8d;--accent:#7bd3bf;--accent-dark:#163e3a;--amber:#e5bd79;--danger:#ff9d8f;font-family:Inter,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;font-synthesis:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);margin:0;min-height:100vh;line-height:1.7}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}button:disabled{cursor:not-allowed;opacity:.47}a{color:inherit}.page-glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 40% 31% at 51% 8%,rgba(49,108,127,.18),transparent),radial-gradient(ellipse 34% 27% at 92% 70%,rgba(31,70,89,.13),transparent)}.shell{max-width:1530px;padding:0 clamp(18px,4.5vw,65px);margin:auto}.topbar{height:90px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:760;line-height:1.15;font-size:13px;letter-spacing:.06em}.brand small{display:block;margin-top:6px;font-size:9px;letter-spacing:.18em;font-weight:550;color:var(--muted)}.mark{font-family:Georgia,serif;font-size:34px;letter-spacing:-.09em;font-weight:600}.mark-dot{color:var(--accent)}.build-info{font-size:10px;font-weight:750;letter-spacing:.14em;color:var(--muted);white-space:nowrap}.status-dot,.live-dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-right:7px}.pipe{margin:0 8px;color:#47596a}.intro{padding:54px 0 42px}.eyebrow,.mini-label{font-size:10px;letter-spacing:.2em;font-weight:760;color:var(--accent);text-transform:uppercase}.eyebrow{display:flex;align-items:center;gap:12px}.eyebrow .line{height:1px;width:22px;background:var(--accent)}.middle-dot{color:var(--weak)}.intro h1{margin:15px 0 13px;font-size:clamp(34px,4.3vw,57px);letter-spacing:.01em;line-height:1.4;font-weight:780}.intro h1 em{font-style:normal;color:var(--accent)}.lead{color:#b5c1d0;font-size:14px;line-height:2.0;margin:0;letter-spacing:.015em}.lead strong{color:var(--text);font-weight:750}.intro-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.intro-meta span{border:1px solid var(--line);color:var(--muted);font-size:11px;padding:4px 11px;border-radius:3px}.workspace{display:grid;grid-template-columns:minmax(235px,.89fr) minmax(335px,1.33fr) minmax(265px,1fr);gap:22px;align-items:start}.panel{border:1px solid var(--line);border-radius:9px;background:linear-gradient(165deg,rgba(24,35,50,.93),rgba(16,24,38,.96));padding:23px;min-width:0}.panel-top,.compare-head,.evidence-header,.branch-code{display:flex;justify-content:space-between;gap:12px;align-items:center}.chip{font-size:10px;padding:3px 8px;color:var(--accent);border-radius:3px;background:var(--accent-dark);white-space:nowrap}.chip.subtle{color:#849bb0;background:#1b2a3a;letter-spacing:.08em}.panel h2{font-size:22px;margin:10px 0 5px;letter-spacing:.02em}.microcopy{font-size:12px;color:var(--muted);line-height:1.9;margin:0 0 22px}.draft-card{padding:16px;background:#111b2a;border:1px solid #2c3c4b;border-radius:6px;margin-top:13px;transition:border-color .25s,background .25s}.draft-card.is-sent{border-color:#397f72;background:#132a2b}.draft-card-head{display:flex;align-items:center;gap:10px}.avatar,.tab-icon{display:grid;place-items:center;border-radius:50%;flex:none;background:#41406b;color:#dedcff;font-size:12px;font-weight:730;width:34px;height:34px}.avatar-kei{background:#6d4d37;color:#f5d6bc}.draft-card-head strong,.draft-card-head span{display:block}.draft-card-head strong{font-size:13px}.draft-card-head div>span{font-size:10px;color:var(--weak)}.draft-copy{font-size:13px;color:#e5e8ef;border-left:2px solid #7f91a8;padding-left:12px;margin:17px 0}.action-btn{background:#263a47;color:#b8efdf;border:1px solid #426e66;width:100%;border-radius:4px;font-size:12px;font-weight:720;padding:10px 9px;display:flex;justify-content:space-between}.is-sent .action-btn{background:transparent;border-color:#68857f;color:#cde2df}.action-btn:hover{filter:brightness(1.12)}.branch-state{margin-top:23px;border-top:1px solid var(--line);padding-top:19px}.branch-code{margin-top:9px}.branch-code #branch-id{font-family:ui-monospace,monospace;font-size:14px;font-weight:750;letter-spacing:.02em}.branch-state p{font-size:11px;color:var(--muted);margin:10px 0 0}.text-button{border:0;background:none;color:#92b8b8;font-size:12px;padding:15px 0 0;text-decoration:underline;text-underline-offset:4px}.phone-section{min-width:0}.phone-outer{max-width:440px;margin:auto;padding:7px;border:1px solid #455164;border-radius:29px;background:linear-gradient(135deg,#1e2a3e,#0b111e 60%,#28384e);box-shadow:0 34px 85px rgba(0,0,0,.30),0 8px 35px rgba(2,11,15,.40)}.phone-frame{overflow:hidden;border-radius:23px;border:1px solid #253449;background:linear-gradient(150deg,#182639,#0e1726 58%);min-height:638px;display:flex;flex-direction:column}.phone-systembar{height:27px;display:flex;justify-content:space-between;padding:6px 23px 0;color:#7a8c9f;font-family:ui-monospace,monospace;letter-spacing:.02em;font-size:10px}.phone-camera{height:5px;width:79px;background:#050b13;border-radius:10px;margin:0 auto 5px}.phone-heading{padding:14px 24px 12px;border-bottom:1px solid #28384b;position:relative}.phone-heading h2{font-size:21px;line-height:1.5;margin:5px 0 0}.phone-heading #messages-state{position:absolute;bottom:17px;right:23px;font-size:10px;color:var(--accent)}.chat-tabs{display:flex;padding:7px 10px;border-bottom:1px solid #334152;gap:3px}.chat-tabs button{display:flex;align-items:center;gap:5px;justify-content:center;position:relative;flex:1;border:0;border-radius:5px;color:#8d9caf;background:transparent;padding:7px 3px;font-size:12px}.chat-tabs button[aria-selected="true"]{color:#dcf7f0;background:#273e49}.tab-icon{width:21px;height:21px;font-size:10px}.tab-icon-system{background:#374e5a;color:#f7cf8c}.notification-pip{height:5px;width:5px;border-radius:50%;background:#e2bb79;position:absolute;right:6px;top:8px}.messages-scroll{min-height:445px;max-height:445px;overflow:auto;padding:19px 18px 27px;scrollbar-color:#46566b transparent;scrollbar-width:thin}.message{margin-bottom:16px;display:flex;flex-direction:column;align-items:flex-start}.message.is-self{align-items:flex-end}.message-bubble{max-width:92%;border:1px solid #344457;background:#253348;border-radius:4px 13px 13px 13px;padding:10px 13px;font-size:12px;line-height:1.85;white-space:pre-line;overflow-wrap:anywhere}.message.is-self .message-bubble{background:#1c4b4b;border-color:#316c63;border-radius:13px 4px 13px 13px}.message.is-changed .message-bubble{border-color:#b3945d;box-shadow:inset 2px 0 #b3945d}.message.is-invariant .message-bubble{background:#2a303d;border-color:#7c6873}.message-meta{color:#7b8ea2;font-size:10px;margin:5px 5px 0}.message .tag{font-size:9px;display:inline-block;color:var(--amber);letter-spacing:.04em;margin-bottom:5px}.notice-line{margin:12px auto 16px;max-width:250px;text-align:center;font-size:11px;color:var(--muted);border:1px solid #344357;padding:8px;border-radius:5px;line-height:1.7}.details-button{margin-top:10px;background:transparent;border:1px solid #756d5b;color:#f0d89d;padding:5px 9px;border-radius:4px;font-size:11px}.detail-trace{margin-top:10px;padding:10px;background:#0d1723;border:1px solid #38505c;border-radius:4px;font-family:ui-monospace,monospace;font-size:10px;line-height:1.9;color:#b6cacf;white-space:pre-wrap;overflow-wrap:anywhere}.phone-bottom{border-top:1px solid #314151;display:flex;align-items:center;justify-content:center;gap:8px;font-size:10px;color:#7c8fa1;padding:14px}.phone-bottom .live-dot{height:5px;width:5px;margin:0 0 0 3px}.phone-footnote{text-align:center;margin:16px auto 0;font-size:11px;color:var(--weak);line-height:1.9}.lab-panel .case-question{margin:19px 0 24px;border-left:2px solid var(--accent);padding:4px 0 4px 15px}.case-question>span{font-size:11px;color:var(--muted)}.case-question strong{display:block;font-size:20px;line-height:1.65;margin-top:7px;letter-spacing:.01em}.case-question em{font-style:normal;color:var(--accent)}.compare-box{border-top:1px solid var(--line);padding-top:19px}.compare-head strong,.evidence-header strong,.answer-header strong{font-size:14px}.compare-head span,.evidence-header span{font-family:ui-monospace,monospace;color:var(--accent);font-size:12px}.compare-box>p,.answer-section>p{font-size:11px;color:var(--muted);line-height:1.9}.compare-button,.answer-button{width:100%;border:0;border-radius:4px;padding:12px 11px;background:var(--accent);color:#0b2a2b;font-size:12px;font-weight:800;display:flex;justify-content:space-between}.compare-button:hover,.answer-button:hover{filter:brightness(1.08)}.compare-results{margin-top:13px;min-height:64px;border:1px dashed #405266;background:#101d2c;border-radius:4px;padding:11px;font-size:11px;line-height:1.8}.placeholder{color:var(--weak)}.compare-note{border-left:2px solid var(--amber);padding-left:10px;margin:6px 0 10px}.compare-note strong{display:block;color:#ead4a9}.compare-note p{margin:2px 0;color:#bac7d1}.compare-constant{font-size:11px;color:var(--accent);margin-top:6px}.evidence-block{border-top:1px solid var(--line);margin-top:22px;padding-top:19px}.evidence-list{display:grid;gap:8px;margin-top:12px}.evidence-empty{font-size:11px;color:var(--weak)}.evidence-item{border:1px solid #355358;background:#12272e;padding:9px;border-radius:4px;font-size:11px;color:#d6eae9}.evidence-item strong{display:block;color:var(--accent);font-size:10px;letter-spacing:.03em;margin-bottom:4px}.answer-section{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}.answer-header .mini-label{display:block}.answer-header strong{display:block;margin-top:7px;font-size:17px}fieldset{margin:13px 0 0;padding:0;border:0;min-width:0}.answer-choice{display:flex;align-items:center;gap:9px;margin:7px 0;padding:10px;border-radius:4px;border:1px solid #334559;font-size:11px;cursor:pointer}.answer-choice:has(input:checked){border-color:var(--accent);background:#193139}.answer-choice input{accent-color:var(--accent)}.answer-button{margin-top:13px}.answer-feedback{font-size:11px;line-height:1.9;color:var(--danger);margin-top:7px}.hints{border-top:1px solid var(--line);padding-top:17px;margin-top:22px;font-size:11px;color:#b5c1d0}.hints summary{cursor:pointer;font-weight:700;color:var(--text)}.hints summary span{font-size:10px;color:var(--weak);font-weight:normal;margin-left:6px}.hints li{margin:9px 0}.footer{display:flex;gap:18px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);font-size:10px;color:var(--weak);letter-spacing:.07em;margin:58px 0 20px;padding-top:19px}.ending-dialog{border:1px solid #516b6e;border-radius:12px;background:#142332;color:var(--text);width:min(550px,calc(100% - 28px));padding:0;box-shadow:0 30px 100px #0009;max-height:90vh;overflow-y:auto}.ending-dialog::backdrop{background:rgba(3,8,16,.84);backdrop-filter:blur(4px)}.ending-content{padding:clamp(24px,5vw,46px)}.ending-content h2{font-size:clamp(26px,4vw,36px);line-height:1.5;margin:16px 0 25px}.ending-content p{font-size:13px;color:#c0cdd4;line-height:2.2}.ending-content strong{color:#ebf3f4}.ending-twist{margin:24px 0;background:#223139;border-left:3px solid var(--amber);padding:16px;color:#ffe1ac;font-weight:700;line-height:2}.ending-content .ending-close{color:var(--accent)}.dialog-actions{display:flex;gap:10px;margin:25px 0}.dialog-actions button{flex:1;border:1px solid var(--accent);background:var(--accent);color:#12302e;padding:11px;border-radius:5px;font-weight:750;font-size:12px}.dialog-actions .outline{background:transparent;color:var(--accent)}.ending-fine{color:var(--weak)}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;width:1px;position:absolute;padding:0;margin:-1px;overflow:hidden;white-space:nowrap}
+@media(max-width:1150px){.workspace{grid-template-columns:minmax(250px,.9fr) minmax(330px,1.1fr)}.lab-panel{grid-column:1/-1}.intro{padding-top:43px}.phone-section{grid-column:2;grid-row:1}}
+@media(max-width:700px){.shell{padding:0 15px}.topbar{height:72px}.brand{font-size:11px}.brand small{font-size:8px}.build-info{font-size:8px}.pipe{margin:0 4px}.intro{padding:33px 0 29px}.intro h1{font-size:clamp(27px,8vw,42px)}.lead{font-size:12px}.workspace{grid-template-columns:minmax(0,1fr);gap:18px}.phone-section{grid-column:1;grid-row:1}.drafts-panel{grid-row:1}.phone-section{grid-row:2}.lab-panel{grid-column:1;grid-row:3}.panel{padding:19px}.phone-frame{min-height:590px}.messages-scroll{min-height:410px;max-height:410px}.phone-footnote{font-size:10px}.footer{display:block;line-height:2}.footer span{display:block}.intro-meta span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+  </style>
+
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="すきま製作所：最初から遊び直す"><span class="mark">S<span class="mark-dot">.</span></span><span>すきま製作所 <small>EXPERIMENTAL FICTION</small></span></a>
+      <div class="build-info"><span class="status-dot" aria-hidden="true"></span> LOCAL PROTOTYPE <span class="pipe">/</span> V0.1</div>
+    </header>
+
+    <section class="intro" aria-labelledby="game-title">
+      <div class="eyebrow"><span class="line"></span> CASE 01 <span class="middle-dot">·</span> 21:04 BACKUP</div>
+      <h1 id="game-title">このメッセージは<br><em>送信されていません。</em></h1>
+      <p class="lead">持ち主の消えたスマートフォン。<br>未送信の下書きを「送った場合」の履歴を再構成できる。<br>なのに、<strong>何を変えても届く警告</strong>が一通だけあった。</p>
+      <div class="intro-meta"><span>約5〜10分の試作</span><span>音なし・オフライン動作</span><span>エンディング1種</span></div>
+    </section>
+
+    <main class="workspace" aria-label="ゲーム画面">
+      <section class="panel drafts-panel" aria-labelledby="drafts-heading">
+        <div class="panel-top"><span class="mini-label">01 / RECONSTRUCT</span><span class="chip subtle">2 DRAFTS</span></div>
+        <h2 id="drafts-heading">未送信トレイ</h2>
+        <p class="microcopy">下書きを送信すると、その後の会話が再構成されます。いつでも取り消せます。</p>
+        <div class="draft-card" id="draft-mina-card">
+          <div class="draft-card-head"><span class="avatar avatar-mina">ミ</span><div><strong>ミナ 宛</strong><span>21:06 / 未送信</span></div></div>
+          <p class="draft-copy">「来なくていい。もう帰った」</p>
+          <button class="action-btn" id="toggle-mina" type="button" aria-pressed="false">この下書きを送る <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="draft-card" id="draft-kei-card">
+          <div class="draft-card-head"><span class="avatar avatar-kei">ケ</span><div><strong>ケイ 宛</strong><span>21:09 / 未送信</span></div></div>
+          <p class="draft-copy">「今夜23時台の映像を保存して」</p>
+          <button class="action-btn" id="toggle-kei" type="button" aria-pressed="false">この下書きを送る <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="branch-state" aria-live="polite">
+          <span class="mini-label">CURRENT RECONSTRUCTION</span>
+          <div class="branch-code"><span id="branch-id">ORIGINAL / 00</span><span id="branch-indicator" class="chip">原本</span></div>
+          <p id="branch-desc">下書きを送っていない元の記録です。</p>
+        </div>
+        <button id="reset-button" class="text-button" type="button">↺ すべて原本に戻す</button>
+      </section>
+
+      <section class="phone-section" aria-labelledby="phone-heading">
+        <div class="phone-outer">
+          <div class="phone-frame">
+            <div class="phone-systembar"><span>21:04 → 23:21</span><span>◢  ▰</span></div>
+            <div class="phone-camera" aria-hidden="true"></div>
+            <div class="phone-heading"><span class="mini-label">ARCHIVED MESSAGES</span><h2 id="phone-heading">会話の記録</h2><span id="messages-state">原本 00</span></div>
+            <div role="tablist" class="chat-tabs" aria-label="会話を切り替える">
+              <button role="tab" id="tab-mina" data-chat="mina" aria-selected="true" aria-controls="chat-messages" type="button"><span class="tab-icon">ミ</span>ミナ</button>
+              <button role="tab" id="tab-kei" data-chat="kei" aria-selected="false" aria-controls="chat-messages" type="button"><span class="tab-icon">ケ</span>ケイ</button>
+              <button role="tab" id="tab-system" data-chat="system" aria-selected="false" aria-controls="chat-messages" type="button"><span class="tab-icon tab-icon-system">!</span>通知<span class="notification-pip" aria-label="未確認あり"></span></button>
+            </div>
+            <div class="messages-scroll" id="chat-messages" role="tabpanel" aria-live="polite" aria-label="チャット履歴"></div>
+            <div class="phone-bottom"><span class="lock-icon" aria-hidden="true">⌁</span> 読み取り専用バックアップ <span class="live-dot"></span></div>
+          </div>
+        </div>
+        <p class="phone-footnote">※これは過去を本当に改変する装置ではありません。<br>下書き送信後の会話を比較する、仮想再構成システムです。</p>
+      </section>
+
+      <section class="panel lab-panel" aria-labelledby="lab-heading">
+        <div class="panel-top"><span class="mini-label">02 / INVESTIGATE</span><span class="chip subtle">CASE FILE</span></div>
+        <h2 id="lab-heading">調査ノート</h2>
+        <div class="case-question"><span>調査目標 / 01</span><strong>23:17 に届く<br>「扉を開けるな」は<br><em>誰が送ったのか？</em></strong></div>
+        <div class="compare-box">
+          <div class="compare-head"><strong>履歴の比較</strong><span id="compare-progress">0 / 2</span></div>
+          <p>下書きを送った状態で比較すると、原本から変わった記録と変わらない記録を表示します。</p>
+          <button id="compare-button" class="compare-button" type="button">原本と比較する <span aria-hidden="true">↗</span></button>
+          <div id="compare-results" class="compare-results" aria-live="polite"><span class="placeholder">まず下書きを1通送ってみてください。</span></div>
+        </div>
+        <div class="evidence-block">
+          <div class="evidence-header"><strong>採取した手がかり</strong><span id="evidence-count">0 / 2</span></div>
+          <div id="evidence-list" class="evidence-list"><div class="evidence-empty">比較と通知の詳細確認で、手がかりがここに保存されます。</div></div>
+        </div>
+        <div class="answer-section" id="answer-section">
+          <div class="answer-header"><span class="mini-label">03 / YOUR CONCLUSION</span><strong>結論を提出する</strong></div>
+          <p id="unlock-guide">解答するには、異なる2つの改変状態を比較し、23:17の通知の詳細を確認してください。</p>
+          <fieldset id="answer-fieldset" disabled>
+            <legend class="sr-only">警告の発信元を選んでください</legend>
+            <label class="answer-choice"><input type="radio" name="answer" value="mina"><span>ミナが送った</span></label>
+            <label class="answer-choice"><input type="radio" name="answer" value="kei"><span>ケイが送った</span></label>
+            <label class="answer-choice"><input type="radio" name="answer" value="timer"><span>この端末が自動で表示した</span></label>
+            <button id="answer-button" class="answer-button" type="button">推理を確定する →</button>
+          </fieldset>
+          <div id="answer-feedback" role="status" aria-live="polite"></div>
+        </div>
+        <details class="hints"><summary>ヒントを見る <span>必要なときだけ</span></summary><ol><li>どちらの人物の行動を変えても、消えないものがあります。</li><li>「通知」タブを開き、23:17の記録にある「詳細を見る」を押してください。</li><li>通信が切れたあとに、誰が何を送れるでしょう？「送信」と「表示」を分けて考えてください。</li></ol></details>
+      </section>
+    </main>
+    <footer class="footer"><span>© すきま製作所 · 試作 / 非公開開発用</span><span>DATA IS FICTIONAL · NO NETWORK REQUIRED</span></footer>
+  </div>
+  <dialog id="ending-dialog" class="ending-dialog" aria-labelledby="ending-heading"><div class="ending-content"><span class="mini-label">CASE 01 / RESOLVED</span><h2 id="ending-heading">あの警告は、<br>誰の返信でもなかった。</h2><p>23:17の「扉を開けるな」は、20:58にこの端末へ登録されたローカル通知だった。ミナが旧館へ来ても来なくても、ケイが映像を残しても残さなくても、通信が切れていても鳴る。</p><p>端末の持ち主・アオは、誰かに知らせたかった。<strong>自分が戻れなくなっても、あの扉には近づくな、と。</strong></p><div class="ending-twist">しかし、通知予約を設定した20:58。<br>アオはまだ、地下の扉を見ていない。</div><p class="ending-close">何を知っていたのか。その謎は、本編へ。</p><div class="dialog-actions"><button type="button" id="close-ending">記録へ戻る</button><button type="button" id="restart-ending" class="outline">最初から遊ぶ</button></div><span class="mini-label ending-fine">TO BE CONTINUED · PROTOTYPE 0.1</span></div></dialog>
+<script>
+"use strict";
+// Fully offline fictional mystery prototype. Branches are deterministic reconstructions,
+// not changes to actual time or to saved user messages.
+const state={mina:false,kei:false,chat:"mina",compared:new Set(),sawDetails:false,showDetails:false,solved:false};
+const $=id=>document.getElementById(id);
+const branchKey=()=>`${Number(state.mina)}${Number(state.kei)}`;
+const message=(time,text,owner=false,changed=false)=>({time,text,owner,changed});
+const makeMessages=()=>({
+ mina:[
+  message("21:05","アオ：俺、まだ旧館にいる。地下の資料を見つけたい。",true),
+  ...(state.mina?[message("21:06","アオ：来なくていい。もう帰った。",true,true),message("21:14","ミナ：帰ったならよかった。明日話そう。",false,true),message("23:11","ミナ：今夜はずっと家にいるよ。",false,true)]:[message("21:13","ミナ：迎えに行く。そこにいて。"),message("23:11","ミナ：正面入口についたよ。"),message("23:16","ミナ：地下の扉、開けていい？")]),
+  message("23:20",state.mina?"ミナ：…ねえ、もう帰ったんだよね？":"ミナ：アオ、どこ？",false,state.mina)
+ ],
+ kei:[
+  message("21:08","ケイ：23時以降の映像は通常どおり上書きされます。"),
+  ...(state.kei?[message("21:09","アオ：今夜23時台の映像を保存して。",true,true),message("21:19","ケイ：了解。別媒体へ保存します。",false,true),message("23:18","ケイ：23:17、地下扉の前に人影は記録されていません。",false,true)]:[message("21:19","ケイ：保存依頼はないので、通常運用で終了します。"),message("23:18","ケイ：23:17の映像は上書き済みです。")]),
+  message("23:21","ケイ：地下扉は外側から施錠されています。")
+ ],
+ system:[
+  message("20:58","SYSTEM：端末内のタイマー登録が更新されました。"),
+  message("23:12","SYSTEM：通信なし / Wi-Fiオフ / 圏外"),
+  {time:"23:17",text:"扉を開けるな",owner:false,changed:false,invariant:true,details:true},
+  message("23:18","SYSTEM：外部からの着信・メッセージ受信はありません。")
+ ]
+});
+function drawMessages(){
+  const root=$("chat-messages"); root.replaceChildren();
+  const messages=makeMessages()[state.chat];
+  for(const m of messages){
+    const outer=document.createElement("article");outer.className="message"+(m.owner?" is-self":"")+(m.changed?" is-changed":"")+(m.invariant?" is-invariant":"");
+    const bubble=document.createElement("div");bubble.className="message-bubble";
+    if(m.invariant){const tag=document.createElement("span");tag.className="tag";tag.textContent="変化なし / すべての再構成に存在";bubble.append(tag,document.createElement("br"));}
+    const content=document.createElement("span");content.textContent=m.text;bubble.append(content);
+    if(m.details){
+      const button=document.createElement("button");button.className="details-button";button.type="button";button.textContent=state.showDetails?"詳細を閉じる":"この通知の詳細を見る";button.setAttribute("aria-expanded",String(state.showDetails));button.addEventListener("click",()=>{state.sawDetails=true;state.showDetails=!state.showDetails;drawMessages();updateEvidence();updateAnswer();});bubble.append(document.createElement("br"),button);
+      if(state.showDetails){const trace=document.createElement("div");trace.className="detail-trace";trace.textContent="SOURCE : DEVICE_LOCAL\nRULE   : TIMER-04\nSET AT : 20:58\nFIRED  : 23:17\nNETWORK: NOT REQUIRED\nOWNER  : アオ / この端末";bubble.append(trace);}
+    }
+    const meta=document.createElement("div");meta.className="message-meta";meta.textContent=m.time+(m.owner?"  アオ / 送信側":"");outer.append(bubble,meta);root.append(outer);
+  }
+  root.scrollTop=0;
+}
+function updateDrafts(){
+  for(const id of ["mina","kei"]){
+    const sent=state[id],card=$("draft-"+id+"-card"),button=$("toggle-"+id);card.classList.toggle("is-sent",sent);button.setAttribute("aria-pressed",String(sent));button.innerHTML=sent?'送信を取り消す <span aria-hidden="true">↶</span>':'この下書きを送る <span aria-hidden="true">↗</span>';
+  }
+  const k=branchKey();$("branch-id").textContent=k==="00"?"ORIGINAL / 00":`RECON / ${k}`;$("branch-indicator").textContent=k==="00"?"原本":"再構成中";$("branch-desc").textContent=k==="00"?"下書きを送っていない元の記録です。":state.mina&&state.kei?"2通とも送信した場合の記録です。":state.mina?"ミナ宛だけ送った場合の記録です。":"ケイ宛だけ送った場合の記録です。";$("messages-state").textContent=k==="00"?"原本 00":`再構成 ${k}`;
+}
+function drawTabs(){for(const id of ["mina","kei","system"]){const tab=$("tab-"+id);tab.setAttribute("aria-selected",String(state.chat===id));tab.tabIndex=state.chat===id?0:-1;}}
+function updateCompare(){
+ const root=$("compare-results"),key=branchKey();root.replaceChildren();$("compare-progress").textContent=`${Math.min(2,state.compared.size)} / 2`;
+ if(state.compared.size===0){const e=document.createElement("span");e.className="placeholder";e.textContent="まだ比較していません。下書きを送った状態で『原本と比較する』を押そう。";root.append(e);return;}
+ const title=document.createElement("div");title.className="compare-note";const h=document.createElement("strong");h.textContent=`最新の比較：${key=== "00"?"原本":`再構成 ${key}`}`;const p=document.createElement("p");p.textContent=key==="00"?"原本では改変差分はありません。":state.mina&&state.kei?"ミナの行動もケイの保存記録も変わった。":state.mina?"ミナは旧館に来なくなった。":"ケイは監視映像を保存した。";title.append(h,p);root.append(title);
+ const constant=document.createElement("div");constant.className="compare-constant";constant.textContent="↳ 変化なし：23:17『扉を開けるな』";root.append(constant);
+ if(state.compared.size>=2){const note=document.createElement("div");note.className="compare-note";const tx=document.createElement("p");tx.textContent="異なる改変を比較できた。通知の発信元を調べよう。";note.append(tx);root.append(note);}
+}
+function updateEvidence(){
+ const root=$("evidence-list");root.replaceChildren();let count=0;
+ const items=[];
+ if(state.compared.size>=2){count++;items.push(["EVIDENCE A / INVARIANT","2種類以上の再構成でも、23:17の警告は消えない。"]);}
+ if(state.sawDetails){count++;items.push(["EVIDENCE B / LOCAL RULE","通知の発火元は端末内の TIMER-04。通信なしでも動作する。"]);}
+ $("evidence-count").textContent=`${count} / 2`;
+ if(!items.length){const none=document.createElement("div");none.className="evidence-empty";none.textContent="履歴の比較や通知の詳細を見ると、手がかりが保存されます。";root.append(none);return;}
+ for(const [label,detail] of items){const e=document.createElement("div");e.className="evidence-item";const strong=document.createElement("strong");strong.textContent=label;const desc=document.createElement("span");desc.textContent=detail;e.append(strong,desc);root.append(e);}
+}
+function updateAnswer(){const ready=state.compared.size>=2&&state.sawDetails;$("answer-fieldset").disabled=!ready;$("unlock-guide").textContent=ready?"必要な記録が揃いました。証拠に基づき発信元を選んでください。":`調査進捗：異なる改変を比較 ${Math.min(state.compared.size,2)}/2、通知の詳細 ${state.sawDetails?"確認済み":"未確認"}。`}
+function render(){updateDrafts();drawTabs();drawMessages();updateCompare();updateEvidence();updateAnswer();}
+function toggle(id){state[id]=!state[id];state.showDetails=false;$("answer-feedback").textContent="";render();}
+function reset(){state.mina=false;state.kei=false;state.chat="mina";state.showDetails=false;state.sawDetails=false;state.solved=false;state.compared.clear();document.querySelectorAll('input[name="answer"]').forEach(e=>e.checked=false);$("answer-feedback").textContent="";$("ending-dialog").close();render();}
+$("toggle-mina").addEventListener("click",()=>toggle("mina"));$("toggle-kei").addEventListener("click",()=>toggle("kei"));$("reset-button").addEventListener("click",reset);
+for(const id of ["mina","kei","system"]){$("tab-"+id).addEventListener("click",()=>{state.chat=id;render();});}
+$("compare-button").addEventListener("click",()=>{const k=branchKey();if(k==="00"){$("compare-results").textContent="原本との比較です。まず下書きを1通送ってください。";return;}state.compared.add(k);updateCompare();updateEvidence();updateAnswer();});
+$("answer-button").addEventListener("click",()=>{if($("answer-fieldset").disabled)return;const checked=document.querySelector('input[name="answer"]:checked');if(!checked){$("answer-feedback").textContent="発信元を選んでから確定してください。";return;}if(checked.value!=="timer"){$("answer-feedback").textContent="その人物の行動が変わる再構成でも、同じ警告が残っています。もう一度記録を見てみよう。";return;}state.solved=true;$("answer-feedback").textContent="解明。";$("ending-dialog").showModal();});
+$("close-ending").addEventListener("click",()=>$("ending-dialog").close());$("restart-ending").addEventListener("click",reset);$("ending-dialog").addEventListener("click",e=>{if(e.target===$("ending-dialog"))$("ending-dialog").close();});
+render();
+
+</script>
+</body>
+</html>
