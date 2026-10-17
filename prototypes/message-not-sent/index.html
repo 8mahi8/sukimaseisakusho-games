@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0b101b">
-  <title>このメッセージは送信されていません｜試作 0.1</title>
+  <title>このメッセージは送信されていません｜試作 0.2</title>
   <meta name="description" content="未送信の一通を送ると、未来のチャット履歴が変わる。すきま製作所の短編インタラクティブミステリー試作。">
   <style>
 :root{color-scheme:dark;--bg:#0b101b;--paper:#101827;--panel:#141e2e;--panel-2:#1b2738;--line:#2a384a;--text:#ebf0f6;--muted:#95a2b4;--weak:#6b7b8d;--accent:#7bd3bf;--accent-dark:#163e3a;--amber:#e5bd79;--danger:#ff9d8f;font-family:Inter,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;font-synthesis:none}
@@ -14,6 +14,11 @@
 @media(max-width:700px){.shell{padding:0 15px}.topbar{height:72px}.brand{font-size:11px}.brand small{font-size:8px}.build-info{font-size:8px}.pipe{margin:0 4px}.intro{padding:33px 0 29px}.intro h1{font-size:clamp(27px,8vw,42px)}.lead{font-size:12px}.workspace{grid-template-columns:minmax(0,1fr);gap:18px}.phone-section{grid-column:1;grid-row:1}.drafts-panel{grid-row:1}.phone-section{grid-row:2}.lab-panel{grid-column:1;grid-row:3}.panel{padding:19px}.phone-frame{min-height:590px}.messages-scroll{min-height:410px;max-height:410px}.phone-footnote{font-size:10px}.footer{display:block;line-height:2}.footer span{display:block}.intro-meta span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
+
+/* First-play clarity: one obvious next action, without taking away free exploration. */
+.play-guide{display:flex;align-items:center;flex-wrap:wrap;gap:18px;padding:22px 24px;margin:0 0 24px;border:1px solid #4a8579;border-radius:10px;background:linear-gradient(115deg,#183638,#142430 70%);box-shadow:0 12px 34px rgba(0,0,0,.15)}
+.guide-copy{flex:1;min-width:260px}.guide-head{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.guide-kicker{font-size:10px;letter-spacing:.13em;color:var(--accent);font-weight:850}.guide-progress{font-size:11px;color:#e2c895;border:1px solid #806d4b;padding:2px 8px;border-radius:4px}.play-guide h2{font-size:clamp(16px,1.75vw,22px);line-height:1.55;margin:7px 0 5px}.play-guide p{font-size:12px;line-height:1.8;color:#c7d6da;margin:0}.guide-action{width:min(100%,295px);flex:none;padding:16px 18px;font-size:13px;font-weight:850;background:var(--accent);color:#092624;border:0;border-radius:6px;line-height:1.55;text-align:left;box-shadow:0 6px 24px #06191d66}.guide-action:hover{filter:brightness(1.07)}.guide-action:focus-visible{outline:3px solid #e5bd79}.guide-action:disabled{background:#527a73;color:#dbe5e2;opacity:1}
+@media(max-width:700px){.play-guide{padding:18px;margin-bottom:16px;gap:15px}.guide-copy{min-width:0;width:100%}.guide-action{width:100%}}
   </style>
 
 </head>
@@ -22,7 +27,7 @@
   <div class="shell">
     <header class="topbar">
       <a class="brand" href="./index.html" aria-label="すきま製作所：最初から遊び直す"><span class="mark">S<span class="mark-dot">.</span></span><span>すきま製作所 <small>EXPERIMENTAL FICTION</small></span></a>
-      <div class="build-info"><span class="status-dot" aria-hidden="true"></span> LOCAL PROTOTYPE <span class="pipe">/</span> V0.1</div>
+      <div class="build-info"><span class="status-dot" aria-hidden="true"></span> PUBLIC PLAYTEST <span class="pipe">/</span> V0.2</div>
     </header>
 
     <section class="intro" aria-labelledby="game-title">
@@ -30,6 +35,15 @@
       <h1 id="game-title">このメッセージは<br><em>送信されていません。</em></h1>
       <p class="lead">持ち主の消えたスマートフォン。<br>未送信の下書きを「送った場合」の履歴を再構成できる。<br>なのに、<strong>何を変えても届く警告</strong>が一通だけあった。</p>
       <div class="intro-meta"><span>約5〜10分の試作</span><span>音なし・オフライン動作</span><span>エンディング1種</span></div>
+    </section>
+
+    <section class="play-guide" id="play-guide" aria-labelledby="guide-title" aria-live="polite">
+      <div class="guide-copy">
+        <div class="guide-head"><span class="guide-kicker">まずここから / 今やること</span><span id="guide-progress" class="guide-progress">STEP 1 / 5</span></div>
+        <h2 id="guide-title">未送信メッセージを1通送ろう</h2>
+        <p id="guide-description">試しに送っても取り消せる。送ったあとのチャットを確認しよう。</p>
+      </div>
+      <button id="guide-action" class="guide-action" type="button">ミナ宛の下書きを送る →</button>
     </section>
 
     <main class="workspace" aria-label="ゲーム画面">
@@ -102,9 +116,9 @@
         <details class="hints"><summary>ヒントを見る <span>必要なときだけ</span></summary><ol><li>どちらの人物の行動を変えても、消えないものがあります。</li><li>「通知」タブを開き、23:17の記録にある「詳細を見る」を押してください。</li><li>通信が切れたあとに、誰が何を送れるでしょう？「送信」と「表示」を分けて考えてください。</li></ol></details>
       </section>
     </main>
-    <footer class="footer"><span>© すきま製作所 · 試作 / 非公開開発用</span><span>DATA IS FICTIONAL · NO NETWORK REQUIRED</span></footer>
+    <footer class="footer"><span>© すきま製作所 · 試作 / プレイテスト版</span><span>DATA IS FICTIONAL · NO NETWORK REQUIRED</span></footer>
   </div>
-  <dialog id="ending-dialog" class="ending-dialog" aria-labelledby="ending-heading"><div class="ending-content"><span class="mini-label">CASE 01 / RESOLVED</span><h2 id="ending-heading">あの警告は、<br>誰の返信でもなかった。</h2><p>23:17の「扉を開けるな」は、20:58にこの端末へ登録されたローカル通知だった。ミナが旧館へ来ても来なくても、ケイが映像を残しても残さなくても、通信が切れていても鳴る。</p><p>端末の持ち主・アオは、誰かに知らせたかった。<strong>自分が戻れなくなっても、あの扉には近づくな、と。</strong></p><div class="ending-twist">しかし、通知予約を設定した20:58。<br>アオはまだ、地下の扉を見ていない。</div><p class="ending-close">何を知っていたのか。その謎は、本編へ。</p><div class="dialog-actions"><button type="button" id="close-ending">記録へ戻る</button><button type="button" id="restart-ending" class="outline">最初から遊ぶ</button></div><span class="mini-label ending-fine">TO BE CONTINUED · PROTOTYPE 0.1</span></div></dialog>
+  <dialog id="ending-dialog" class="ending-dialog" aria-labelledby="ending-heading"><div class="ending-content"><span class="mini-label">CASE 01 / RESOLVED</span><h2 id="ending-heading">あの警告は、<br>誰の返信でもなかった。</h2><p>23:17の「扉を開けるな」は、20:58にこの端末へ登録されたローカル通知だった。ミナが旧館へ来ても来なくても、ケイが映像を残しても残さなくても、通信が切れていても鳴る。</p><p>端末の持ち主・アオは、誰かに知らせたかった。<strong>自分が戻れなくなっても、あの扉には近づくな、と。</strong></p><div class="ending-twist">しかし、通知予約を設定した20:58。<br>アオはまだ、地下の扉を見ていない。</div><p class="ending-close">何を知っていたのか。その謎は、本編へ。</p><div class="dialog-actions"><button type="button" id="close-ending">記録へ戻る</button><button type="button" id="restart-ending" class="outline">最初から遊ぶ</button></div><span class="mini-label ending-fine">TO BE CONTINUED · PROTOTYPE 0.2</span></div></dialog>
 <script>
 "use strict";
 // Fully offline fictional mystery prototype. Branches are deterministic reconstructions,
@@ -140,7 +154,7 @@ function drawMessages(){
     if(m.invariant){const tag=document.createElement("span");tag.className="tag";tag.textContent="変化なし / すべての再構成に存在";bubble.append(tag,document.createElement("br"));}
     const content=document.createElement("span");content.textContent=m.text;bubble.append(content);
     if(m.details){
-      const button=document.createElement("button");button.className="details-button";button.type="button";button.textContent=state.showDetails?"詳細を閉じる":"この通知の詳細を見る";button.setAttribute("aria-expanded",String(state.showDetails));button.addEventListener("click",()=>{state.sawDetails=true;state.showDetails=!state.showDetails;drawMessages();updateEvidence();updateAnswer();});bubble.append(document.createElement("br"),button);
+      const button=document.createElement("button");button.className="details-button";button.type="button";button.textContent=state.showDetails?"詳細を閉じる":"この通知の詳細を見る";button.setAttribute("aria-expanded",String(state.showDetails));button.addEventListener("click",()=>{state.sawDetails=true;state.showDetails=!state.showDetails;drawMessages();updateEvidence();updateAnswer();updateGuide();});bubble.append(document.createElement("br"),button);
       if(state.showDetails){const trace=document.createElement("div");trace.className="detail-trace";trace.textContent="SOURCE : DEVICE_LOCAL\nRULE   : TIMER-04\nSET AT : 20:58\nFIRED  : 23:17\nNETWORK: NOT REQUIRED\nOWNER  : アオ / この端末";bubble.append(trace);}
     }
     const meta=document.createElement("div");meta.className="message-meta";meta.textContent=m.time+(m.owner?"  アオ / 送信側":"");outer.append(bubble,meta);root.append(outer);
@@ -171,13 +185,62 @@ function updateEvidence(){
  for(const [label,detail] of items){const e=document.createElement("div");e.className="evidence-item";const strong=document.createElement("strong");strong.textContent=label;const desc=document.createElement("span");desc.textContent=detail;e.append(strong,desc);root.append(e);}
 }
 function updateAnswer(){const ready=state.compared.size>=2&&state.sawDetails;$("answer-fieldset").disabled=!ready;$("unlock-guide").textContent=ready?"必要な記録が揃いました。証拠に基づき発信元を選んでください。":`調査進捗：異なる改変を比較 ${Math.min(state.compared.size,2)}/2、通知の詳細 ${state.sawDetails?"確認済み":"未確認"}。`}
-function render(){updateDrafts();drawTabs();drawMessages();updateCompare();updateEvidence();updateAnswer();}
+function updateGuide(){
+  const current=branchKey(), compared=state.compared;
+  let number=1, title="未送信メッセージを1通送ろう", description="ミナ宛の『もう帰った』を送ると、複数のチャットの未来が変わる。いつでも取り消せます。", action="ミナ宛の下書きを送る →", kind="send";
+  if(state.solved){number=5;title="推理クリア！";description="よく調べました。記録を読み返すことも、最初から遊び直すこともできます。";action="最初から遊び直す ↺";kind="restart";}
+  else if(compared.size===0&&current!=="00"){
+    number=2;title="送信後の会話を比べてみよう";description="『ミナ』『ケイ』のチャットを覗いてみよう。変わった記録を確認したら、下のボタンで比較を記録。";action="この未来を原本と比較する →";kind="compare";
+  }else if(compared.size===1){
+    number=3;
+    if(compared.has(current)||current==="00"){
+      title="別の未来も試してみよう";description="今度は下書きの送り先を入れ替える。別の相手に送った場合、何が変わる？";action="別の送信パターンに切り替える →";kind="alternate";
+    }else{
+      title="2つ目の未来を比較しよう";description="前とは違う送信パターンです。会話を覗いたら、もう一度『原本と比較』を実行。";action="2つ目の未来を比較する →";kind="compare";
+    }
+  }else if(compared.size>=2&&!state.sawDetails){
+    number=4;
+    if(state.chat!=="system"){
+      title="変わらなかった通知を調べよう";description="会話は変わったのに23:17の警告はそのまま。スマホの『通知』タブを開こう。";action="通知タブを開く →";kind="notifications";
+    }else{
+      title="23:17の警告の詳細を開こう";description="スマホに表示された『扉を開けるな』の発信情報を確認しよう。";action="通知の詳細を見る →";kind="details";
+    }
+  }else if(compared.size>=2&&state.sawDetails){
+    number=5;title="警告の発信元を推理しよう";description="手がかりは揃った。23:17の『扉を開けるな』は、誰が送ったもの？";action="回答する →";kind="answer";
+  }
+  $("guide-progress").textContent=`STEP ${number} / 5`;
+  $("guide-title").textContent=title;
+  $("guide-description").textContent=description;
+  $("guide-action").textContent=action;
+  $("guide-action").dataset.kind=kind;
+}
+function compareCurrent(){
+  const k=branchKey();
+  if(k==="00"){$("compare-results").textContent="まず下書きを1通送ってください。";return;}
+  state.compared.add(k);render();
+}
+function guideNext(){
+  const kind=$("guide-action").dataset.kind;
+  if(kind==="send"){toggle("mina");return;}
+  if(kind==="compare"){compareCurrent();return;}
+  if(kind==="alternate"){
+    const first=[...state.compared][0];
+    state.mina=first==="01";state.kei=first!=="01";
+    // 10 → 01, 01 → 10, 11 → 01, never repeat the same reconstruction.
+    state.showDetails=false;render();return;
+  }
+  if(kind==="notifications"){state.chat="system";render();return;}
+  if(kind==="details"){state.chat="system";state.sawDetails=true;state.showDetails=true;render();return;}
+  if(kind==="answer"){$("answer-section").scrollIntoView({behavior:"smooth",block:"center"});$("answer-section").querySelector('input[name="answer"]').focus({preventScroll:true});return;}
+  if(kind==="restart"){reset();return;}
+}
+function render(){updateDrafts();drawTabs();drawMessages();updateCompare();updateEvidence();updateAnswer();updateGuide();}
 function toggle(id){state[id]=!state[id];state.showDetails=false;$("answer-feedback").textContent="";render();}
 function reset(){state.mina=false;state.kei=false;state.chat="mina";state.showDetails=false;state.sawDetails=false;state.solved=false;state.compared.clear();document.querySelectorAll('input[name="answer"]').forEach(e=>e.checked=false);$("answer-feedback").textContent="";$("ending-dialog").close();render();}
 $("toggle-mina").addEventListener("click",()=>toggle("mina"));$("toggle-kei").addEventListener("click",()=>toggle("kei"));$("reset-button").addEventListener("click",reset);
 for(const id of ["mina","kei","system"]){$("tab-"+id).addEventListener("click",()=>{state.chat=id;render();});}
-$("compare-button").addEventListener("click",()=>{const k=branchKey();if(k==="00"){$("compare-results").textContent="原本との比較です。まず下書きを1通送ってください。";return;}state.compared.add(k);updateCompare();updateEvidence();updateAnswer();});
-$("answer-button").addEventListener("click",()=>{if($("answer-fieldset").disabled)return;const checked=document.querySelector('input[name="answer"]:checked');if(!checked){$("answer-feedback").textContent="発信元を選んでから確定してください。";return;}if(checked.value!=="timer"){$("answer-feedback").textContent="その人物の行動が変わる再構成でも、同じ警告が残っています。もう一度記録を見てみよう。";return;}state.solved=true;$("answer-feedback").textContent="解明。";$("ending-dialog").showModal();});
+$("compare-button").addEventListener("click",compareCurrent);$("guide-action").addEventListener("click",guideNext);
+$("answer-button").addEventListener("click",()=>{if($("answer-fieldset").disabled)return;const checked=document.querySelector('input[name="answer"]:checked');if(!checked){$("answer-feedback").textContent="発信元を選んでから確定してください。";return;}if(checked.value!=="timer"){$("answer-feedback").textContent="その人物の行動が変わる再構成でも、同じ警告が残っています。もう一度記録を見てみよう。";return;}state.solved=true;$("answer-feedback").textContent="解明。";updateGuide();$("ending-dialog").showModal();});
 $("close-ending").addEventListener("click",()=>$("ending-dialog").close());$("restart-ending").addEventListener("click",reset);$("ending-dialog").addEventListener("click",e=>{if(e.target===$("ending-dialog"))$("ending-dialog").close();});
 render();
 
