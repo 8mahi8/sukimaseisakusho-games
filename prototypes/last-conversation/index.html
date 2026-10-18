@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#191b29"><meta name="description" content="関係性と言葉を引き、ふたりで最後の会話を即興で作る。サーバー不要の2人用会話ゲーム試作。">
+<meta name="theme-color" content="#191b29"><meta name="description" content="ふたりで最後の会話を作る2人用ストーリープレイング。アカウント不要・オンライン同期なし。">
 <title>最後の会話｜ふたりで作る即興ストーリー</title>
 <style>
 :root{color-scheme:light;--night:#1b1d2b;--indigo:#30304b;--sky:#7074a2;--dust:#edf0f3;--cream:#faf8f3;--paper:#fffdf9;--ink:#262739;--muted:#626677;--line:#d9d9e2;--gold:#b7793d;--soft:#f2edeb;--green:#476a62}
@@ -22,16 +22,16 @@ body.playing .section{margin-top:15px}body.playing .playcenter{margin-top:19px}
 </style>
 </head><body>
 <div class="mast"><div class="shell"><p class="top-note">SUKIMA SEISAKUSHO / STORY GAME 01</p><div class="micro">TWO PLAYERS · NO GAME MASTER</div><h1 class="heading">最後の会話を<br>再現してください。</h1><p class="dek">最初に決まっているのは、ふたりの関係と、最後のひと言だけ。</p></div></div>
-<div class="stagebar"><div class="shell"><div class="step-mark" id="pageStep">01 / PREPARATION</div><div class="status-pill">アカウント・同期不要</div></div></div>
+<div class="stagebar"><div class="shell"><div class="step-mark" id="pageStep">01 / PREPARATION</div><div class="status-pill">アカウント・同期なし</div></div></div>
 <main class="shell">
-<div id="setup">
+<div id="setup"><section class="section box" id="loadDeckSection"><h2 class="section-title">はじめにカードを読み込む</h2><p class="caption">BOOTHで購入したZIPに入っている「02_カードデータ.json」を選んでください。<strong>最初に操作する人だけ</strong>でOK。もう一人は招待リンクから入れます。</p><label class="form-label" for="loadPack">購入したカードデータ（.json）</label><input id="loadPack" type="file" accept=".json,application/json" class="field"><p id="packStatus" class="message" role="status" aria-live="polite">カードはまだ読み込まれていません。</p></section>
  <section class="section"><h2 class="section-title">ふたつのカードを引く</h2><p class="caption">関係性と最後の言葉は別々に決まります。変な組み合わせこそ歓迎。</p><button type="button" class="btn alt" id="drawBoth" style="width:100%;margin-bottom:16px">まずはおまかせで2枚引く ↻</button>
  <div class="grid">
   <div class="choice"><div class="label">01 / RELATIONSHIP</div><div class="chosen" id="relationText">まだ引いていません</div><div><button class="btn" id="drawRelation" type="button">関係性を引く</button><div class="custom-open"><button type="button" id="editRelation" aria-expanded="false">自分で関係性を決める</button></div><div class="custom-wrap hide" id="customRelWrap"><label class="form-label" for="customRelation">好きな関係性（60文字以内）</label><input id="customRelation" class="field" maxlength="60" placeholder="例：昨日まで敵同士だった二人"><button class="btn alt" id="saveRelation" type="button">この関係性にする</button></div></div></div>
   <div class="choice word"><div class="label">02 / LAST LINE</div><div class="chosen" id="lastText">まだ引いていません</div><div><button class="btn gold" id="drawLast" type="button">最後の言葉を引く</button><div class="custom-open"><button type="button" id="editLast" aria-expanded="false">自分で最後の言葉を決める</button></div><div class="custom-wrap hide" id="customLastWrap"><label class="form-label" for="customLast">好きな最後の言葉（60文字以内）</label><input id="customLast" class="field" maxlength="60" placeholder="例：次はあっちで会おう"><button class="btn alt" id="saveLast" type="button">この言葉にする</button></div></div></div>
  </div></section>
  <section class="section setup-grid"><div class="box"><label class="form-label" for="turnCount">会話カードを引く回数</label><select id="turnCount" class="select"><option value="3" selected>3ターン（標準）＋ラスト</option><option value="2">2ターン（短縮）＋ラスト</option></select><p class="caption" style="margin-top:10px">毎ターン1枚の会話カードを引き、自由に話します。最後は新しいカードを引かず、指定された言葉で締めます。</p><button id="begin" class="btn big" type="button" disabled style="width:100%">この組み合わせで始める →</button><p id="setupMessage" class="message" role="status" aria-live="polite"></p></div>
-  <div class="joinpanel"><h3>相手のゲームに参加</h3><p class="caption">相手から届いた招待リンクを開くか、招待コードを貼り付けてください。</p><label class="form-label" for="joinCode">招待コード</label><textarea class="text-area" rows="3" id="joinCode" placeholder="LC4.…" autocapitalize="off" spellcheck="false"></textarea><button class="btn alt" type="button" id="join" style="width:100%;margin-top:8px">コードで参加</button><p id="joinError" class="message" role="status" aria-live="polite"></p></div></section>
+  <div class="joinpanel"><h3>相手のゲームに参加</h3><p class="caption">相手から届いた招待リンクを開くか、招待コードを貼り付けてください。</p><label class="form-label" for="joinCode">招待コード</label><textarea class="text-area" rows="3" id="joinCode" placeholder="LC6.…" autocapitalize="off" spellcheck="false"></textarea><button class="btn alt" type="button" id="join" style="width:100%;margin-top:8px">コードで参加</button><p id="joinError" class="message" role="status" aria-live="polite"></p></div></section>
  <section class="section box"><h2 class="section-title">遊び方はシンプル</h2><p class="caption">① 片方が関係性と最後の言葉を決める → ② 招待リンクかコードを共有 → ③ Discordなどで通話 → ④ ふたりが合図してカードを引き進める → ⑤ 指定のひと言で終わる。</p><p class="small">このゲームに物語の正解はありません。奇妙な組み合わせも、あえて無理やりつなげるのも遊びの一部です。</p></section>
 </div>
 <div id="game" class="hide">
@@ -43,13 +43,14 @@ body.playing .section{margin-top:15px}body.playing .playcenter{margin-top:19px}
  </section>
 </div>
 </main>
-<footer class="footer">© SUKIMA SEISAKUSHO · 試遊版 v0.5 · 通話とカードの共通表示だけを提供します。公開・販売前のローカル試作。</footer>
+<footer class="footer">© SUKIMA SEISAKUSHO · カード表示プレイヤー · カード内容は購入ファイルから読み込みます</footer>
 <script>
 'use strict';
-const DATA={"relationships": ["かつて親友だった二人", "長い間会っていなかった兄弟姉妹", "昨日初めて出会った二人", "元恋人だった二人", "長年のライバル同士", "同じ秘密を共有している二人", "かつて師弟だった二人", "一度だけ一緒に旅をした二人", "隣同士に住んでいた二人", "別々の道を選んだ元同僚", "何度も喧嘩してきた二人", "お互いの正体を知らない文通相手"], "last_words": ["それ、まだ持ってたんだ", "また明日ね", "最初から知ってたよ", "じゃあ、半分こね", "忘れていいよ", "もう子どもじゃないんだね", "次は負けないから", "今度は君の番だ", "あそこに戻ろう", "その音、懐かしいね", "結局、変わらないね", "これで、おあいこだ"], "cues": [["場所", "二人にとって意味のある場所について話してください。", "風景"], ["思い出", "以前、二人の間で起きたことを話してください。", "過去"], ["物", "何か一つの物を話題にしてください。", "手がかり"], ["近況", "最近の変化について話してください。", "現在"], ["出会い", "二人が知り合った頃について話してください。", "過去"], ["人", "ここにいない誰かについて話してください。", "人物"], ["約束", "以前の約束について話してください。", "過去"], ["音", "何かの音をきっかけに会話を進めてください。", "場面"], ["質問", "普段は聞かない質問をしてみてください。", "対話"], ["食事", "食べたことや食べたいものについて話してください。", "日常"], ["意外", "相手の意外な一面について話してください。", "関係"], ["笑い", "笑える話題を一つ交えてください。", "雰囲気"], ["沈黙", "一度会話を止めてから、続けてください。", "間"], ["すれ違い", "互いに受け取り方が違ったことについて話してください。", "関係"], ["願い", "どちらかの願いについて話してください。", "感情"], ["これから", "これからについて話してください。", "未来"], ["言いかけ", "言いかけたことを話題にしてください。", "対話"], ["別れ道", "過去に選ばなかった道について話してください。", "選択"]]};
+let DATA={"relationships":[],"last_words":[],"cues":[]};
 const $=id=>document.getElementById(id);
 const str=s=>String(s||'');
 let relChoice=null,lastChoice=null,room=null,phase=0,rerolls={};
+const deckReady=()=>DATA.relationships.length>0&&DATA.last_words.length>0&&DATA.cues.length>=6;
 function fnv(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
 function seed(){let out='';const abc='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let b=new Uint8Array(8);if(window.crypto?.getRandomValues)crypto.getRandomValues(b);else for(let i=0;i<8;i++)b[i]=Math.floor(Math.random()*256);for(let i=0;i<8;i++)out+=abc[b[i]%abc.length];return out}
 function nextRand(s){let v=fnv(s);return ()=>{v+=0x6d2b79f5;let t=v;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296}}
@@ -57,37 +58,40 @@ function permutation(n,key){const a=Array.from({length:n},(_,i)=>i),r=nextRand(k
 function randomChoice(len){const b=new Uint32Array(1);if(window.crypto?.getRandomValues)crypto.getRandomValues(b);else b[0]=Math.floor(Math.random()*4294967296);return b[0]%len}
 function makeText(target,s){$(target).textContent=s}
 function valueOf(selection,kind){return typeof selection==='number'?DATA[kind][selection]:selection}
-function choose(which){const isRel=which==='rel',d=isRel?DATA.relationships:DATA.last_words;let index=randomChoice(d.length);const before=isRel?relChoice:lastChoice;
+function choose(which){if(!deckReady()){makeText('setupMessage','最初に購入カードデータを読み込んでください。');return;}const isRel=which==='rel',d=isRel?DATA.relationships:DATA.last_words;let index=randomChoice(d.length);const before=isRel?relChoice:lastChoice;
  if(typeof before==='number' && index===before && d.length>1)index=(index+1+randomChoice(d.length-1))%d.length;
  if(isRel)relChoice=index;else lastChoice=index;makeText(isRel?'relationText':'lastText',isRel?d[index]:'「'+d[index]+'」');$(isRel?'drawRelation':'drawLast').textContent='もう一度引く ↻';validate()}
-function validate(){ $('begin').disabled=relChoice===null||lastChoice===null }
+function validate(){ $('begin').disabled=relChoice===null||lastChoice===null||!deckReady() }
 function custom(which){const isRel=which==='rel';const v=$(isRel?'customRelation':'customLast').value.trim();if(!v){makeText('setupMessage','文字を入力してから決定してください。');return;}if(v.length>60){makeText('setupMessage','自由入力は60文字以内でお願いします。');return;}if(isRel)relChoice=v;else lastChoice=v;makeText(isRel?'relationText':'lastText',isRel?v:'「'+v+'」');$(isRel?'customRelWrap':'customLastWrap').classList.add('hide');$(isRel?'editRelation':'editLast').setAttribute('aria-expanded','false');$('setupMessage').textContent='';validate()}
 function b64encode(text){const b=new TextEncoder().encode(text);let bin='';for(const c of b)bin+=String.fromCharCode(c);return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function b64decode(s){const x=s.replace(/-/g,'+').replace(/_/g,'/');const bin=atob(x+'='.repeat((4-x.length%4)%4));return new TextDecoder('utf-8',{fatal:true}).decode(Uint8Array.from(bin,c=>c.charCodeAt(0)))}
-function encode(r){const obj=[4,r.seed,r.rel,r.last,r.turns];const core=b64encode(JSON.stringify(obj));const check=fnv(core).toString(16).slice(-5);return 'LC4.'+core+'.'+check}
-function parse(input){let s=str(input).trim();if(s.includes('#')){try{let u=new URL(s,location.href);const params=new URLSearchParams(u.hash.slice(1));s=params.get('room')||'';}catch{}}
- const m=/^LC4\.([A-Za-z0-9_-]{10,1400})\.([a-f0-9]{1,5})$/.exec(s);if(!m)return null;if(fnv(m[1]).toString(16).slice(-5)!==m[2])return null;
- try{const [v,random,r,l,t]=JSON.parse(b64decode(m[1]));
- if(v!==4||typeof random!=='string'||!/^[A-Z2-9]{8}$/.test(random)||![2,3].includes(t))return null;
- if(!((Number.isInteger(r)&&r>=0&&r<DATA.relationships.length)||(typeof r==='string'&&r.length<=60&&r.trim())))return null;
- if(!((Number.isInteger(l)&&l>=0&&l<DATA.last_words.length)||(typeof l==='string'&&l.length<=60&&l.trim())))return null;
- return {seed:random,rel:r,last:l,turns:t};}catch{return null}}
-function create(){if(relChoice===null||lastChoice===null)return;room={seed:seed(),rel:relChoice,last:lastChoice,turns:Number($('turnCount').value)};enter(room)}
+function encode(r){const obj=[6,r.seed,r.relText,r.lastText,r.turns,r.cards];const core=b64encode(JSON.stringify(obj));const check=fnv(core).toString(16).slice(-5);return 'LC6.'+core+'.'+check}
+function parse(input){let s=str(input).trim();if(s.includes('#')){try{const u=new URL(s,location.href);s=new URLSearchParams(u.hash.slice(1)).get('room')||''}catch{}}
+ const m=/^LC6\.([A-Za-z0-9_-]{10,10000})\.([a-f0-9]{1,5})$/.exec(s);if(!m)return null;if(fnv(m[1]).toString(16).slice(-5)!==m[2])return null;
+ try{const [v,random,relText,lastText,turns,cards]=JSON.parse(b64decode(m[1]));
+ if(v!==6||typeof random!=='string'||!/^[A-Z2-9]{8}$/.test(random)||![2,3].includes(turns))return null;
+ if(typeof relText!=='string'||!relText.trim()||relText.length>60||typeof lastText!=='string'||!lastText.trim()||lastText.length>60)return null;
+ if(!Array.isArray(cards)||cards.length!==2*turns||!cards.every(c=>Array.isArray(c)&&c.length===3&&c.every((s,i)=>typeof s==='string'&&s.length<=(i===1?180:60)&&s.trim())))return null;
+ return {seed:random,relText,lastText,turns,cards};}catch{return null}}
+function create(){if(relChoice===null||lastChoice===null||!deckReady())return;
+ const random=seed(), turns=Number($('turnCount').value), deck=permutation(DATA.cues.length,random+'|CUE|V6');
+ const cards=deck.slice(0,turns*2).map(i=>DATA.cues[i]);
+ room={seed:random,relText:valueOf(relChoice,'relationships'),lastText:valueOf(lastChoice,'last_words'),turns,cards};enter(room)}
 function roomURL(state=false){const code=encode(room),hash=new URLSearchParams();hash.set('room',code);if(state){hash.set('step',String(phase));hash.set('reroll',Object.keys(rerolls).sort().map(k=>k+':'+rerolls[k]).join(','));}return location.href.split('#')[0]+'#'+hash.toString()}
 function canShareLink(){return /^https?:$/.test(location.protocol)}
-function enter(r,initial=0,initialRerolls={}){room=r;phase=initial;rerolls=initialRerolls;$('setup').classList.add('hide');$('game').classList.remove('hide');document.body.classList.add('playing');makeText('pageStep','02 / YOUR STORY');makeText('gameRelation',valueOf(r.rel,'relationships'));makeText('gameLast','「'+valueOf(r.last,'last_words')+'」');makeText('sessionCode',encode(r));$('sharePanel').open=phase===0;draw();setHash();scrollTo({top:0,behavior:'instant'})}
+function enter(r,initial=0,initialRerolls={}){room=r;phase=initial;rerolls=initialRerolls;$('setup').classList.add('hide');$('game').classList.remove('hide');document.body.classList.add('playing');makeText('pageStep','02 / YOUR STORY');makeText('gameRelation',r.relText);makeText('gameLast','「'+r.lastText+'」');makeText('sessionCode',encode(r));$('sharePanel').open=phase===0;draw();setHash();scrollTo({top:0,behavior:'instant'})}
 function setHash(){if(!room)return;if(location.protocol==='http:'||location.protocol==='https:')history.replaceState(null,'',roomURL(true))}
-function getCue(i){const deck=permutation(DATA.cues.length,room.seed+'|CUE|V4');const alt=rerolls[i]||0;return DATA.cues[deck[2*i+alt]]}
+function getCue(i){return room.cards[2*i+(rerolls[i]||0)]}
 function draw(){const last=room.turns+1,card=$('mainCard');card.classList.remove('reveal');void card.offsetWidth;card.classList.add('reveal');card.classList.toggle('finalcard',phase===last);
  $('previous').disabled=phase===0;$('advance').disabled=phase===last;$('redraw').classList.add('hide');$('progress').replaceChildren();for(let i=1;i<=last;i++){let seg=document.createElement('span');if(i<phase)seg.className='done';if(i===phase)seg.className='now';$('progress').append(seg)}
  if(phase===0){makeText('stageNumber','READY / 準備');makeText('cardType','BEFORE YOU BEGIN');makeText('cardTitle','ふたりの会話を始めよう');makeText('cardDesc','それぞれの役を決めてください。ほかの設定は会話の中で自由に作れます。');makeText('stageGuide','準備ができたら、第1ターンのカードを引きましょう。');makeText('advance','第1ターンのカードを引く →')}
  else if(phase<=room.turns){const cue=getCue(phase-1);makeText('stageNumber','TURN '+phase+' / '+room.turns);makeText('cardType','TALK CARD / '+cue[2]);makeText('cardTitle',cue[0]);makeText('cardDesc',cue[1]);makeText('stageGuide','二人で自由に会話し、一区切りしたら次へ。');makeText('advance',phase===room.turns?'ラストターンへ →':'次のカードを引く →');$('redraw').classList.remove('hide');$('redraw').disabled=(rerolls[phase-1]||0)>=1;$('redraw').textContent=$('redraw').disabled?'このターンは引き直し済み':'このカードを1回引き直す'}
- else{makeText('stageNumber','LAST TURN / 最後の会話');makeText('cardType','THE LAST LINE');makeText('cardTitle','「'+valueOf(room.last,'last_words')+'」');makeText('cardDesc','新しいカードは引きません。自由に会話を締めくくり、このひと言で終えてください。');makeText('stageGuide','このセリフが発せられた瞬間、物語は完成です。');makeText('advance','物語は完成しました')}
+ else{makeText('stageNumber','LAST TURN / 最後の会話');makeText('cardType','THE LAST LINE');makeText('cardTitle','「'+room.lastText+'」');makeText('cardDesc','新しいカードは引きません。自由に会話を締めくくり、このひと言で終えてください。');makeText('stageGuide','このセリフが発せられた瞬間、物語は完成です。');makeText('advance','物語は完成しました')}
 }
 function navigate(n){const before=phase;phase=Math.max(0,Math.min(room.turns+1,phase+n));if(before===0&&phase>0)$('sharePanel').open=false;draw();setHash();}
 function reopen(){room=null;phase=0;rerolls={};$('setup').classList.remove('hide');$('game').classList.add('hide');document.body.classList.remove('playing');makeText('pageStep','01 / PREPARATION');if(location.protocol==='http:'||location.protocol==='https:')history.replaceState(null,'',location.href.split('#')[0]);scrollTo({top:0,behavior:'instant'})}
-async function copy(s,where){try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(s);makeText(where,'コピーしました。')}catch{makeText(where,'コピーできない環境です。上の招待コードを長押しで選択してコピーしてください。')}}
-function copyLink(progress=false){if(!canShareLink()){makeText(progress?'progressMessage':'shareMessage','このHTMLはまだWeb公開していません。両方の端末で同じHTMLを開き、招待コードを渡してください。公開後はリンクも使えます。');return;}copy(roomURL(progress),progress?'progressMessage':'shareMessage')}
+async function copy(s,where){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(s)}else{const f=document.createElement('textarea');f.value=s;f.style.position='fixed';f.style.opacity='0';document.body.append(f);f.select();const ok=document.execCommand('copy');f.remove();if(!ok)throw Error('clipboard unavailable')}makeText(where,'コピーしました。')}catch{makeText(where,'自動コピーできない場合は上の招待コードを選択してコピーしてください。')}}
+function copyLink(progress=false){if(!canShareLink()){makeText(progress?'progressMessage':'shareMessage','この画面をWeb上で開くと招待リンクを共有できます。');return;}copy(roomURL(progress),progress?'progressMessage':'shareMessage')}
 function parseSession(input){
  const r=parse(input);if(!r)return null;let pos=0,alt={};
  const text=str(input).trim();if(text.includes('#')){
@@ -109,6 +113,13 @@ $('join').onclick=()=>{const s=parseSession($('joinCode').value);if(!s){makeText
 $('exit').onclick=reopen;$('previous').onclick=()=>navigate(-1);$('advance').onclick=()=>navigate(1);$('redraw').onclick=()=>{const i=phase-1;if(phase>=1&&phase<=room.turns&&!rerolls[i]){rerolls[i]=1;draw();setHash()}};
 $('copyCode').onclick=()=>copy(encode(room),'shareMessage');$('copyLink').onclick=()=>copyLink(false);$('copyProgress').onclick=()=>copyLink(true);
 $('showRules').onclick=()=>$('rulesText').classList.toggle('hide');
-fromHash();
+
+function validPack(p){return p&&p.format==='LC_CARDPACK_V1'&&Array.isArray(p.relationships)&&p.relationships.length>=2&&p.relationships.length<=100&&p.relationships.every(s=>typeof s==='string'&&s.trim()&&s.length<=60)&&Array.isArray(p.last_words)&&p.last_words.length>=2&&p.last_words.length<=100&&p.last_words.every(s=>typeof s==='string'&&s.trim()&&s.length<=60)&&Array.isArray(p.cues)&&p.cues.length>=6&&p.cues.length<=300&&p.cues.every(c=>Array.isArray(c)&&c.length===3&&c.every((s,i)=>typeof s==='string'&&s.trim()&&s.length<=(i===1?180:60)))}
+$('loadPack').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;
+ if(f.size>300000){makeText('packStatus','データが大きすぎます。購入時のファイルを選んでください。');return}
+ try{const p=JSON.parse(await f.text());if(!validPack(p))throw Error('形式が違います');
+ DATA={relationships:p.relationships,last_words:p.last_words,cues:p.cues};relChoice=null;lastChoice=null;makeText('relationText','まだ引いていません');makeText('lastText','まだ引いていません');makeText('packStatus','✓ カードを読み込みました。下のボタンからゲームを始めてください。');makeText('setupMessage','');validate();
+ }catch{makeText('packStatus','読み込みに失敗しました。ZIPに入っている「02_カードデータ.json」を選んでください。')}});
+validate();fromHash();
 </script>
 </body></html>
